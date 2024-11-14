@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.light {
+  --bgColor: #8188ee;
+  --textColor: black;
+  --btnColor: rgb(238, 179, 238);
+  /* --btnColor:  */
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+.dark {
+  --bgColor: #4e148c;
+  --textColor: white;
+  --btnColor: rgb(183, 60, 183);
+  background-color: var(--bgColor);
+  color: var(--textColor);
+}
+
+.resizer {
+  background-color: greenyellow;
+  width: 12px;
+  cursor: ew-resize;
+  :hover {
+    transform: scaleX(25%);
+  }
+}
