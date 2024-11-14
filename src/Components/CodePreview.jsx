@@ -3,7 +3,6 @@ import ThemeContext from "../../ThemeContext";
 
 const CodePreview = ({ code, view, previewWidth }) => {
   let { html, css, js } = code;
-  let { theme } = useContext(ThemeContext);
   let [toRender, setToRender] = useState(`
         <html>
           <style>${css}</style>
@@ -26,16 +25,11 @@ const CodePreview = ({ code, view, previewWidth }) => {
     return () => clearTimeout(timeout); // Clear timeout on input change
   }, [code]);
 
-  // const previewStyles = {
-  //   // "min-width": view == "side-side" ? "50%" : "100%",
-  //   width: previewWidth,
-  // };
-
   return (
     <div
       style={{
         "min-width": previewWidth ? previewWidth : "50%",
-        backgroundColor: theme == "dark" ? "#9157ce" : "#b4b8f4",
+        // backgroundColor: theme == "dark" ? "#9157ce" : "#b4b8f4",
       }}
       className="border border-red-800 min-h-[50%] bg-white p-2"
     >

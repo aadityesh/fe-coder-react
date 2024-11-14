@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import Button from "./Button";
+import ThemeContext from "../../ThemeContext";
 
 const CodeEditor = ({ code, handleInput, env, view }) => {
   let { html, css, js } = code;
   let { setHTML, setCSS, setJS } = handleInput;
+  let { theme } = useContext(ThemeContext);
 
   let codeToRender = "";
   if (env == "html") codeToRender = code.html;
@@ -32,10 +34,11 @@ const CodeEditor = ({ code, handleInput, env, view }) => {
       <Editor
         style={{ flexGrow: 1 }}
         className="border border-red-700 min-h-[90vh] bg-btnColor"
-        defaultLanguage={`${env}`}
+        language={`${env}`}
         defaultValue={`/****  Write your code here ****/`}
         value={codeToRender ? codeToRender : ""}
         onChange={(newCode) => handleInputChange(newCode)}
+        theme={theme == "light" ? "light" : "vs-dark"}
         //   onChange={(newCode) => console.log(newCode)}
       />
     </>

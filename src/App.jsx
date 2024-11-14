@@ -29,27 +29,6 @@ function App() {
     else setTheme("dark");
   };
 
-  const onMouseDown = () => {
-    document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("mouseup", onMouseUp);
-  };
-
-  const onMouseMove = (e) => {
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      const newEditorWidth = ((e.clientX / containerWidth) * 100).toFixed(2);
-      setPreviewWidth(`${newEditorWidth}%`);
-      const resizer = document.querySelectorById("resizerElement");
-      console.log(resizer);
-      resizer.style.left = `${newEditorWidth}%`;
-    }
-  };
-
-  const onMouseUp = () => {
-    document.removeEventListener("mousemove", onMouseMove);
-    document.removeEventListener("mouseup", onMouseUp);
-  };
-
   const pos = {
     "background-color": "greenyellow",
     position: "absolute",
@@ -62,7 +41,6 @@ function App() {
   return (
     <>
       <div className={`max-w-[100vw] max-h-screen ${theme}`}>
-        <p className="text-3xl px-2">{previewWidth}</p>
         <header>
           <Navigation
             env={env}
@@ -81,23 +59,19 @@ function App() {
               previewWidth={previewWidth}
               code={{ html, css, js }}
               view={view}
-              ref={containerRef}
             />
-            <div
+            {/* <div
               id="resizerElement"
               style={{ pos }}
               className="resizer"
-              onMouseDown={onMouseDown}
               draggable
-            ></div>
+            ></div> */}
             <CodeEditor
               code={{ html, css, js }}
               handleInput={{ setCSS, setHTML, setJS }}
               env={env}
               view={view}
             />
-            {/* {/* <CodeEditor code={html} setCode={setHTML} /> */}
-            {/* <CodeEditor code={html} setCode={setJS} /> */}
           </main>
         )}
         {view == "top-down" && (
@@ -109,8 +83,6 @@ function App() {
               env={env}
               view={view}
             />
-            {/* {/* <CodeEditor code={html} setCode={setHTML} /> */}
-            {/* <CodeEditor code={html} setCode={setJS} /> */}
           </main>
         )}
       </div>

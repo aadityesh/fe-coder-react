@@ -18,14 +18,10 @@ function Navigation({
         <ToggleTheme label={theme} handleThemeChange={handleThemeChange} />
         <ChangeView className="self-center" view={view} setView={setView} />
       </section>
-      <section className="self-center">
-        <Button onClick={() => setPreviewWidth((e) => e - 10)} label="<" />
-        <Button onClick={() => setPreviewWidth((e) => e - 10)} label=">" />
-      </section>
       <section className="flex gap-5 pl-5">
         <Button onClick={() => setEnvironment("html")} label="HTML" />
         <Button onClick={() => setEnvironment("css")} label="CSS" />
-        <Button onClick={() => setEnvironment("js")} label="JS" />
+        <Button onClick={() => setEnvironment("javascript")} label="JS" />
       </section>
     </nav>
   );
