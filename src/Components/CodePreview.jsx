@@ -1,4 +1,3 @@
-import { Position } from "monaco-editor";
 import React, { useContext, useEffect, useState } from "react";
 import ThemeContext from "../../ThemeContext";
 
